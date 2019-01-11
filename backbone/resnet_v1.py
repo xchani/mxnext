@@ -97,41 +97,41 @@ class Builder(object):
 
         # C1
         if use_3x3_conv0:
-            data = conv(data, filter=64, kernel=3, stride=2, name="conv0_0")
-            data = norm(data, name='bn0_0')
-            data = relu(data, name='relu0_0')
+            data = conv(data, filter=64, kernel=3, stride=2, name="conv1_0")
+            data = norm(data, name='bn1_0')
+            data = relu(data, name='relu1_0')
 
-            data = conv(data, filter=64, kernel=3, name="conv0_1")
-            data = norm(data, name='bn0_1')
-            data = relu(data, name='relu0_1')
+            data = conv(data, filter=64, kernel=3, name="conv1_1")
+            data = norm(data, name='bn1_1')
+            data = relu(data, name='relu1_1')
 
-            data = conv(data, filter=64, kernel=3, name="conv0_2")
-            data = norm(data, name='bn0_2')
-            data = relu(data, name='relu0_2')
+            data = conv(data, filter=64, kernel=3, name="conv1_2")
+            data = norm(data, name='bn1_2')
+            data = relu(data, name='relu1_2')
         else:
-            data = conv(data, filter=64, kernel=7, stride=2, name="conv0")
-            data = norm(data, name='bn0')
-            data = relu(data, name='relu0')
+            data = conv(data, filter=64, kernel=7, stride=2, name="conv1")
+            data = norm(data, name='bn1')
+            data = relu(data, name='relu1')
 
-        data = pool(data, name="pool0", kernel=3, stride=2, pool_type='max')
+        data = pool(data, name="pool1", kernel=3, stride=2, pool_type='max')
 
         return data
 
     @classmethod
     def resnet_c2(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "stage1", num_block, 256, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "res2", num_block, 256, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_c3(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "stage2", num_block, 512, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "res3", num_block, 512, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_c4(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "stage3", num_block, 1024, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "res4", num_block, 1024, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_c5(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "stage4", num_block, 2048, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "res5", num_block, 2048, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_factory(cls, depth, use_3x3_conv0, use_bn_preprocess, norm_type="local", norm_mom=0.9, ndev=None, fp16=False):
