@@ -119,19 +119,19 @@ class Builder(object):
 
     @classmethod
     def resnet_c2(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "res2", num_block, 256, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "conv2", num_block, 256, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_c3(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "res3", num_block, 512, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "conv3", num_block, 512, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_c4(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "res4", num_block, 1024, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "conv4", num_block, 1024, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_c5(cls, data, num_block, stride, dilate, norm_type, norm_mom, ndev):
-        return cls.resnet_stage(data, "res5", num_block, 2048, stride, dilate, norm_type, norm_mom, ndev)
+        return cls.resnet_stage(data, "conv5", num_block, 2048, stride, dilate, norm_type, norm_mom, ndev)
 
     @classmethod
     def resnet_factory(cls, depth, use_3x3_conv0, use_bn_preprocess, norm_type="local", norm_mom=0.9, ndev=None, fp16=False):
